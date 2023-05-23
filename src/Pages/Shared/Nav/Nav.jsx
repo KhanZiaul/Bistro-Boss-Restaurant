@@ -23,7 +23,7 @@ const Nav = () => {
 
     return (
 
-        <div className="navbar bg-black text-white fixed z-20  opacity-75">
+        <div className="navbar bg-black text-white fixed z-20  opacity-75 max-w-screen-xl">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
