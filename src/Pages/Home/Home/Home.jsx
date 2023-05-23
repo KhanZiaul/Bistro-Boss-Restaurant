@@ -5,6 +5,7 @@ import ContactUs from "../ContactUs/ContactUs";
 import OrderOnline from "../OrderOnline/OrderOnline";
 import OurMenu from "../OurMenu/OurMenu";
 import OurMenuBanner from "../OurMenuBanner/OurMenuBanner";
+import TestiMonials from "../TestiMonials/TestiMonials";
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
           <ContactUs></ContactUs>
           <ChefRecommends></ChefRecommends>
           <OurMenuBanner></OurMenuBanner>
+          <TestiMonials></TestiMonials>
         </div>
     );
 };
