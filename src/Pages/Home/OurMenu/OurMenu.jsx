@@ -28,7 +28,7 @@ const OurMenu = () => {
                     menus?.slice(0,showMore ? 6 : menus?.length).map(menu => {
                         return (
                             <>
-                                <div className="flex justify-between items-center gap-10">
+                                <div className="flex justify-between items-center flex-col lg:flex-row gap-10">
                                     <div>
                                         <img className="w-[118px] h-[104px] border" src={menu?.image} alt="" />
                                     </div>
