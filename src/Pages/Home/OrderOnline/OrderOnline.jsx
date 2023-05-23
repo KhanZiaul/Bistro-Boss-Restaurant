@@ -16,7 +16,7 @@ const OrderOnline = () => {
             <Title
                 subTitle={'--- From 11:00am to 10:00pm ---'}
                 Title={'ORDER ONLINE'}></Title>
-            <div>
+            <div className='cursor-pointer'>
                 <Swiper
                     slidesPerView={4}
                     spaceBetween={30}
