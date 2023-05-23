@@ -5,11 +5,16 @@ import './OurMenu.css'
 const OurMenu = () => {
 
     const [menus, setMenus] = useState([])
+    const [showMore, setShowMore] = useState(true)
     useEffect(() => {
         fetch('menu.json')
             .then(res => res.json())
             .then(datas => setMenus(datas))
     }, [])
+
+    function showMoreHandler() {
+        setShowMore(!showMore)
+    }
 
     return (
         <div className='my-12'>
@@ -20,7 +25,7 @@ const OurMenu = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-16 space-y-6 mx-4 lg:mx-0">
                 {
-                    menus?.map(menu => {
+                    menus?.slice(0,showMore ? 6 : menus?.length).map(menu => {
                         return (
                             <>
                                 <div className="flex justify-between items-center gap-10">
@@ -41,6 +46,7 @@ const OurMenu = () => {
                     })
                 }
             </div>
+            <button onClick={showMoreHandler} className="btn btn-outline bottom-0 border-b-4 block mx-auto">{showMore ? 'View Full Menu' : 'View Less Menu'}</button>
         </div>
     );
 };
