@@ -14,32 +14,38 @@ const OrderOnline = () => {
     return (
         <div className='my-12'>
             <Title
-                subTitle={'---From 11:00am to 10:00pm---'}
+                subTitle={'--- From 11:00am to 10:00pm ---'}
                 Title={'ORDER ONLINE'}></Title>
             <div>
                 <Swiper
-                    slidesPerView={3}
+                    slidesPerView={4}
                     spaceBetween={30}
+                    centeredSlides={true}
                     pagination={{
                         clickable: true,
                     }}
                     modules={[Pagination]}
-                    className="mySwiper mb-16"
+                    className="mySwiper mb-16 mt-8"
                 >
                     <SwiperSlide>
                         <img src={image1} alt="" />
+                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Salads</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image2} alt="" />
+                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Soups</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image3} alt="" />
+                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>pizzas</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image4} alt="" />
+                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Soups</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image5} alt="" />
+                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Salads</h2>
                     </SwiperSlide>
                 </Swiper>
             </div>
