@@ -29,27 +29,26 @@ const OrderOnline = () => {
                 >
                     <SwiperSlide>
                         <img src={image1} alt="" />
-                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Salads</h2>
+                        <h2 className='uppercase  lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Salads</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image2} alt="" />
-                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Soups</h2>
+                        <h2 className='uppercase lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Soups</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image3} alt="" />
-                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>pizzas</h2>
+                        <h2 className='uppercase lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>pizzas</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image4} alt="" />
-                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Soups</h2>
+                        <h2 className='uppercase lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Soups</h2>
                     </SwiperSlide>
                     <SwiperSlide>
                         <img src={image5} alt="" />
-                        <h2 className='uppercase text-xl lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Salads</h2>
+                        <h2 className='uppercase lg:text-4xl text-center -mt-9 lg:-mt-12 text-white'>Salads</h2>
                     </SwiperSlide>
                 </Swiper>
             </div>
-
         </div>
     );
 };
