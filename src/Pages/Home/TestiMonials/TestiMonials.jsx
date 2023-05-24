@@ -13,7 +13,7 @@ const TestiMonials = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:7000/reviews')
             .then(res => res.json())
             .then(datas => setReviews(datas))
     }, [])
@@ -30,7 +30,6 @@ const TestiMonials = () => {
                     {
                         reviews?.map(review => {
                             return (
-                            
                                     <SwiperSlide key={review._id}>
                                         <div className="text-center w-[90%] mx-auto">
                                             <div className="mx-auto w-[10%] mb-3">
