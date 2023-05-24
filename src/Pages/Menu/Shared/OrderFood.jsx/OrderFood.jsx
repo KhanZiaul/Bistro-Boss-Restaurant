@@ -1,13 +1,15 @@
 import Title from "../../../../Components/Title/Title";
 
-const OrderFood = ({title , subTitle , items}) => {
+const OrderFood = ({ title, subTitle, items }) => {
 
     return (
         <div className='my-12'>
-            <Title
-                subTitle={subTitle}
-                Title={title}>
-            </Title>
+            {
+                title && <Title
+                    subTitle={subTitle}
+                    Title={title}>
+                </Title>
+            }
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-16 space-y-6 mx-4 lg:mx-0">
                 {
