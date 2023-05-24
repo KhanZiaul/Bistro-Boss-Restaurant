@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Title from "../../../../Components/Title/Title";
 
-const OrderFood = ({ title, subTitle, items }) => {
+const Order = ({ title, subTitle, items }) => {
 
     return (
         <div className='my-12'>
@@ -38,4 +38,4 @@ const OrderFood = ({ title, subTitle, items }) => {
     );
 };
 
-export default OrderFood;
+export default Order;

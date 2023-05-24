@@ -11,7 +11,6 @@ import image from '../../../assets/home/quote.png'
 const TestiMonials = () => {
 
     const [reviews, setReviews] = useState([])
-
     useEffect(() => {
         fetch('http://localhost:7000/reviews')
             .then(res => res.json())
@@ -30,21 +29,20 @@ const TestiMonials = () => {
                     {
                         reviews?.map(review => {
                             return (
-                                    <SwiperSlide key={review._id}>
-                                        <div className="text-center w-[90%] mx-auto">
-                                            <div className="mx-auto w-[10%] mb-3">
-                                                <img className="w-12 mx-auto mb-4" src={image} alt="" />
-                                                <Rating
-                                                    style={{ maxWidth: 120 }}
-                                                    value={review?.rating}
-                                                    readOnly
-                                                />
-                                            </div>
-                                            <p className="mb-3"> {review?.details}</p>
-                                            <p className="text-3xl text-yellow-500">{review?.name}</p>
+                                <SwiperSlide key={review._id}>
+                                    <div className="text-center w-[90%] mx-auto">
+                                        <div className="mx-auto w-[10%] mb-3">
+                                            <img className="w-12 mx-auto mb-4" src={image} alt="" />
+                                            <Rating
+                                                style={{ maxWidth: 120 }}
+                                                value={review?.rating}
+                                                readOnly
+                                            />
                                         </div>
-                                    </SwiperSlide>
-                             
+                                        <p className="mb-3"> {review?.details}</p>
+                                        <p className="text-3xl text-yellow-500">{review?.name}</p>
+                                    </div>
+                                </SwiperSlide>
                             )
                         })
                     }
