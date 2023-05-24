@@ -9,9 +9,13 @@ const OurMenu = () => {
     useEffect(() => {
         fetch('menu.json')
             .then(res => res.json())
-            .then(datas => setMenus(datas))
-    }, [])
+            .then(datas => {
+                const populars = datas?.filter(popular => popular.category === 'popular')
+                setMenus(populars)
 
+            })
+    }, [])
+ 
     function showMoreHandler() {
         setShowMore(!showMore)
     }
