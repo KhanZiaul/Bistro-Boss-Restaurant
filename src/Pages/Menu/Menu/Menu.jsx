@@ -12,6 +12,7 @@ const Menu = () => {
     const dessert = allMenu?.filter(popular => popular.category === 'dessert')
     const pizza = allMenu?.filter(popular => popular.category === 'pizza')
     const salad = allMenu?.filter(popular => popular.category === 'salad')
+    const soup = allMenu?.filter(popular => popular.category === 'soup')
 
     return (
         <div>
@@ -39,6 +40,12 @@ const Menu = () => {
             <Cover image={image2} title='salad' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
 
             <OrderFood items={salad}></OrderFood>
+
+            {/* Soup */}
+
+            <Cover image={image2} title='soup' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
+
+            <OrderFood items={soup}></OrderFood>
 
         </div>
     );
