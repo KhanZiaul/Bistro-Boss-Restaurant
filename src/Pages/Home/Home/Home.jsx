@@ -3,8 +3,8 @@ import ChefRecommends from "../ChefRecommends/ChefRecommends";
 import ChefService from "../ChefService/ChefService";
 import ContactUs from "../ContactUs/ContactUs";
 import OrderOnline from "../OrderOnline/OrderOnline";
-import OurMenu from "../OurMenu/OurMenu";
 import OurMenuBanner from "../OurMenuBanner/OurMenuBanner";
+import Popular from "../Popular/Popular";
 import TestiMonials from "../TestiMonials/TestiMonials";
 
 
@@ -14,7 +14,7 @@ const Home = () => {
           <Banner></Banner>
           <OrderOnline></OrderOnline>
           <ChefService></ChefService>
-          <OurMenu></OurMenu>
+          <Popular></Popular>
           <ContactUs></ContactUs>
           <ChefRecommends></ChefRecommends>
           <OurMenuBanner></OurMenuBanner>

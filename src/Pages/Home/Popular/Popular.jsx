@@ -1,17 +1,15 @@
 import Title from "../../../Components/Title/Title";
-import { useEffect, useState } from "react";
-import './OurMenu.css'
+import { useState } from "react";
+import './Popular.css'
 import useMenuData from "../../../Hooks/useMenuData/useMenuData";
 
-const OurMenu = () => {
+const Popular = () => {
     const [showMore, setShowMore] = useState(true)
     const [allMenu] = useMenuData()
     const populars = allMenu?.filter(popular => popular.category === 'popular')
-
     function showMoreHandler() {
         setShowMore(!showMore)
     }
-
     return (
         <div className='my-12'>
             <Title
@@ -45,4 +43,4 @@ const OurMenu = () => {
     );
 };
 
-export default OurMenu;
+export default Popular;
