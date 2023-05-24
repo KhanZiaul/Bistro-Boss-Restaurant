@@ -1,8 +1,23 @@
 import { Helmet } from 'react-helmet-async';
 import image1 from '../../../assets/shop/banner2.jpg'
 import Cover from '../../Shared/Cover/Cover';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import useMenuData from '../../../Hooks/useMenuData/useMenuData';
+import { useState } from 'react';
 
 const Order = () => {
+
+    // const [initialIndex,setIndex] = useState(0)
+
+    const [allMenu] = useMenuData()
+    const offered = allMenu?.filter(popular => popular.category === 'offered')
+    const dessert = allMenu?.filter(popular => popular.category === 'dessert')
+    const pizza = allMenu?.filter(popular => popular.category === 'pizza')
+    const salad = allMenu?.filter(popular => popular.category === 'salad')
+    const soup = allMenu?.filter(popular => popular.category === 'soup')
+
+
     return (
         <div>
             <Helmet>
@@ -10,7 +25,33 @@ const Order = () => {
             </Helmet>
 
             <Cover image={image1} title='OUR SHOP' subTitle='WOULD YOU LIKE TO TRY A DISH ?'></Cover>
-            
+
+            <Tabs defaultIndex={1} onSelect={(index) => console.log(index)}>
+                <TabList>
+                    <Tab>Salad</Tab>
+                    <Tab>Pizza</Tab>
+                    <Tab>Soup</Tab>
+                    <Tab>Desserts</Tab>
+                    <Tab>Drinks</Tab>
+                </TabList>
+
+                <TabPanel>
+                    <h2>Any content 1</h2>
+                </TabPanel>
+                <TabPanel>
+                    <h2>Any content 2</h2>
+                </TabPanel>
+                <TabPanel>
+                    <h2>Any content 1</h2>
+                </TabPanel>
+                <TabPanel>
+                    <h2>Any content 2</h2>
+                </TabPanel>
+                <TabPanel>
+                    <h2>Any content 1</h2>
+                </TabPanel>
+            </Tabs>
+
         </div>
     );
 };
