@@ -61,7 +61,11 @@ const Order = () => {
                 </TabPanel>
 
                 <TabPanel>
-                
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
+                        {
+                            dessert?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
+                        }
+                    </div>
                 </TabPanel>
 
                 <TabPanel>
