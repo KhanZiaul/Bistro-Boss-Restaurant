@@ -12,7 +12,7 @@ const Order = () => {
     // const [initialIndex,setIndex] = useState(0)
 
     const [allMenu] = useMenuData()
-    const offered = allMenu?.filter(popular => popular.category === 'offered')
+    const drinks = allMenu?.filter(popular => popular.category === 'drinks')
     const dessert = allMenu?.filter(popular => popular.category === 'dessert')
     const pizza = allMenu?.filter(popular => popular.category === 'pizza')
     const salad = allMenu?.filter(popular => popular.category === 'salad')
@@ -43,18 +43,27 @@ const Order = () => {
                         }
                     </div>
                 </TabPanel>
+
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
+                        {
+                            pizza?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
+                        }
+                    </div>
                 </TabPanel>
+
                 <TabPanel>
-                    <h2>Any content 1</h2>
+                  
                 </TabPanel>
+
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                
                 </TabPanel>
+
                 <TabPanel>
-                    <h2>Any content 1</h2>
+                  
                 </TabPanel>
+
             </Tabs>
 
         </div>
