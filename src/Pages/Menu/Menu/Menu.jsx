@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import image1 from '../../../assets/menu/banner3.jpg'
 import image2 from '../../../assets/menu/dessert-bg.jpeg'
 import image3 from '../../../assets/menu/pizza-bg.jpg'
@@ -19,6 +20,10 @@ const Menu = () => {
 
     return (
         <div>
+
+            <Helmet>
+                <title>MENU | Bistro Boss Restaurant</title>
+            </Helmet>
 
             {/* Offered */}
 
