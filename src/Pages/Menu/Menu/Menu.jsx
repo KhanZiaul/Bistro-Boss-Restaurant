@@ -11,6 +11,7 @@ const Menu = () => {
     const offered = allMenu?.filter(popular => popular.category === 'offered')
     const dessert = allMenu?.filter(popular => popular.category === 'dessert')
     const pizza = allMenu?.filter(popular => popular.category === 'pizza')
+    const salad = allMenu?.filter(popular => popular.category === 'salad')
 
     return (
         <div>
@@ -32,6 +33,12 @@ const Menu = () => {
             <Cover image={image2} title='pizza' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
 
             <OrderFood items={pizza}></OrderFood>
+
+            {/* Salad */}
+
+            <Cover image={image2} title='salad' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
+
+            <OrderFood items={salad}></OrderFood>
 
         </div>
     );
