@@ -1,21 +1,13 @@
 import Title from "../../../Components/Title/Title";
 import { useEffect, useState } from "react";
 import './OurMenu.css'
+import useMenuData from "../../../Hooks/useMenuData/useMenuData";
 
 const OurMenu = () => {
-
-    const [menus, setMenus] = useState([])
     const [showMore, setShowMore] = useState(true)
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(datas => {
-                const populars = datas?.filter(popular => popular.category === 'popular')
-                setMenus(populars)
+    const [allMenu] = useMenuData()
+    const populars = allMenu?.filter(popular => popular.category === 'popular')
 
-            })
-    }, [])
- 
     function showMoreHandler() {
         setShowMore(!showMore)
     }
@@ -29,10 +21,9 @@ const OurMenu = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-16 space-y-6 mx-4 lg:mx-0">
                 {
-                    menus?.slice(0,showMore ? 6 : menus?.length).map(menu => {
+                    populars?.slice(0, showMore ? 6 : populars?.length).map((menu,index) => {
                         return (
-                            <>
-                                <div className="flex justify-between items-center flex-col lg:flex-row gap-10">
+                                <div key={index} className="flex justify-between items-center flex-col lg:flex-row gap-10">
                                     <div>
                                         <img className="w-[118px] h-[104px] border" src={menu?.image} alt="" />
                                     </div>
@@ -45,7 +36,6 @@ const OurMenu = () => {
                                         <p className="text-xl text-yellow-500">${menu?.price}</p>
                                     </div>
                                 </div>
-                            </>
                         )
                     })
                 }

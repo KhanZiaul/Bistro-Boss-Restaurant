@@ -30,8 +30,8 @@ const TestiMonials = () => {
                     {
                         reviews?.map(review => {
                             return (
-                                <>
-                                    <SwiperSlide>
+                            
+                                    <SwiperSlide key={review._id}>
                                         <div className="text-center w-[90%] mx-auto">
                                             <div className="mx-auto w-[10%] mb-3">
                                                 <img className="w-12 mx-auto mb-4" src={image} alt="" />
@@ -45,7 +45,7 @@ const TestiMonials = () => {
                                             <p className="text-3xl text-yellow-500">{review?.name}</p>
                                         </div>
                                     </SwiperSlide>
-                                </>
+                             
                             )
                         })
                     }
