@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
 
-const Tabs = ({item}) => {
+const TabCard = ({item}) => {
 
     const {image , name , recipe} = item
 
     return (
-        <div>
-            <div className="card w-full lg:w-96 bg-base-100 shadow-xl">
+            <div className="card w-full lg:h-[96] lg:w-96 bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                     <img src={image} alt="item" className="rounded-xl" />
                 </figure>
@@ -19,8 +18,7 @@ const Tabs = ({item}) => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 
-export default Tabs;
+export default TabCard;
