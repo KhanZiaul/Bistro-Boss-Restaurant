@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Title from "../../../../Components/Title/Title";
 
 const OrderFood = ({ title, subTitle, items }) => {
@@ -10,7 +11,7 @@ const OrderFood = ({ title, subTitle, items }) => {
                     Title={title}>
                 </Title>
             }
-
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-16 space-y-6 mx-4 lg:mx-0">
                 {
                     items?.map((item, index) => {
@@ -32,7 +33,7 @@ const OrderFood = ({ title, subTitle, items }) => {
                     })
                 }
             </div>
-            <button className="btn btn-outline bottom-0 border-b-4 block mx-auto">ORDER YOUR FAVOURITE FOOD</button>
+            <Link><button className="btn btn-outline bottom-0 border-b-4 block mx-auto">ORDER YOUR FAVOURITE FOOD</button></Link>
         </div>
     );
 };

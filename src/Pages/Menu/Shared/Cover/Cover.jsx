@@ -1,5 +1,3 @@
-
-
 const Cover = ({ image, title, subTitle }) => {
     return (
         <div>
