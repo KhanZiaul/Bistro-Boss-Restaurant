@@ -4,7 +4,6 @@ import Cover from '../../Shared/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenuData from '../../../Hooks/useMenuData/useMenuData';
-import { useState } from 'react';
 import TabCard from '../TabCard/TabCard';
 
 const Order = () => {

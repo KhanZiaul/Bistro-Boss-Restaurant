@@ -7,6 +7,7 @@ import image5 from '../../../assets/menu/soup-bg.jpg'
 import useMenuData from '../../../Hooks/useMenuData/useMenuData';
 import Cover from '../../Shared/Cover/Cover'
 import OrderFood from '../Shared/OrderFood.jsx/OrderFood';
+import Title from '../../../Components/Title/Title'
 
 const Menu = () => {
 
@@ -29,31 +30,30 @@ const Menu = () => {
 
             <Cover image={image1} title='OUR MENU' subTitle='WOULD YOU LIKE TO TRY A DISH ?'></Cover>
 
-            <OrderFood title={"TODAY'S OFFER"} items={offered} subTitle={"--- Don't miss ---"}></OrderFood>
+            <div className='mt-12'>
+                <Title
+                    subTitle={"TODAY'S OFFER"}
+                    Title={"--- Don't miss ---"}>
+                </Title>
+            </div>
+
+            <OrderFood items={offered} ></OrderFood>
 
             {/* Dessert */}
 
-            <Cover image={image2} title='dessert' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-
-            <OrderFood items={dessert}></OrderFood>
+            <OrderFood image={image2} title='dessert' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." items={dessert}></OrderFood>
 
             {/* Pizza */}
 
-            <Cover image={image3} title='pizza' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-
-            <OrderFood items={pizza}></OrderFood>
+            <OrderFood image={image3} title='pizza' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." items={pizza}></OrderFood>
 
             {/* Salad */}
 
-            <Cover image={image4} title='salad' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-
-            <OrderFood items={salad}></OrderFood>
+            <OrderFood image={image4} title='salad' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." items={salad}></OrderFood>
 
             {/* Soup */}
 
-            <Cover image={image5} title='soup' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."></Cover>
-
-            <OrderFood items={soup}></OrderFood>
+            <OrderFood image={image5} title='soup' subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." items={soup}></OrderFood>
 
         </div>
     );
