@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";;
-import Cover from "../../../Shared/Cover/Cover";
+import { Link } from "react-router-dom";
+import Cover from "../Cover/Cover";
+
 
 const Order = ({ title, subTitle, image , items }) => {
 

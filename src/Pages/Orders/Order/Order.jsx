@@ -1,14 +1,23 @@
 import { Helmet } from 'react-helmet-async';
 import image1 from '../../../assets/shop/banner2.jpg'
-import Cover from '../../Shared/Cover/Cover';
+import Cover from '../../Menu/Shared/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenuData from '../../../Hooks/useMenuData/useMenuData';
-import TabCard from '../TabCard/TabCard';
+import TabMenu from '../TabMenu/TabMenu';
+import { useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import useScroll from '../../../Hooks/useScroll/useScroll';
 
 const Order = () => {
 
-    // const [initialIndex,setIndex] = useState(0)
+    const location = useLocation()
+    useScroll(location)
+ 
+    const items = ['salad' , 'pizza', 'soup' , 'desserts' , 'drinks']
+    const {category} = useParams()
+    const initialIndex = items.indexOf(category)
+    const [indexNumber,setIndexNumber] = useState(initialIndex)
 
     const [allMenu] = useMenuData()
     const drinks = allMenu?.filter(popular => popular.category === 'drinks')
@@ -24,9 +33,9 @@ const Order = () => {
                 <title>ORDER | Bistro Boss Restaurant</title>
             </Helmet>
 
-            <Cover image={image1} title='OUR SHOP' subTitle='WOULD YOU LIKE TO TRY A DISH ?'></Cover>
+            <Cover image={image1} title='OUR ORDER' subTitle='WOULD YOU LIKE TO TRY A DISH ?'></Cover>
 
-            <Tabs defaultIndex={1} onSelect={(index) => console.log(index)}>
+            <Tabs defaultIndex={indexNumber} onSelect={(index) => setIndexNumber(index)}>
                 <TabList>
                     <Tab>Salad</Tab>
                     <Tab>Pizza</Tab>
@@ -36,43 +45,23 @@ const Order = () => {
                 </TabList>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
-                        {
-                            salad?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
-                        }
-                    </div>
+                    <TabMenu item={salad}></TabMenu>
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
-                        {
-                            pizza?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
-                        }
-                    </div>
+                    <TabMenu item={pizza}></TabMenu>
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
-                        {
-                            soup?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
-                        }
-                    </div>
+                    <TabMenu item={soup}></TabMenu>
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
-                        {
-                            dessert?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
-                        }
-                    </div>
+                    <TabMenu item={dessert}></TabMenu>
                 </TabPanel>
 
                 <TabPanel>
-                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
-                        {
-                            drinks?.map(singleItem => <TabCard key={singleItem._id} item={singleItem}></TabCard>)
-                        }
-                    </div>
+                    <TabMenu item={drinks}></TabMenu>
                 </TabPanel>
 
             </Tabs>

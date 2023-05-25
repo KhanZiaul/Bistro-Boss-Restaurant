@@ -5,9 +5,9 @@ import image3 from '../../../assets/menu/pizza-bg.jpg'
 import image4 from '../../../assets/menu/salad-bg.jpg'
 import image5 from '../../../assets/menu/soup-bg.jpg'
 import useMenuData from '../../../Hooks/useMenuData/useMenuData';
-import Cover from '../../Shared/Cover/Cover'
 import OrderFood from '../Shared/OrderFood.jsx/OrderFood';
 import Title from '../../../Components/Title/Title'
+import Cover from '../Shared/Cover/Cover'
 
 const Menu = () => {
 
@@ -26,8 +26,6 @@ const Menu = () => {
                 <title>MENU | Bistro Boss Restaurant</title>
             </Helmet>
 
-            {/* Offered */}
-
             <Cover image={image1} title='OUR MENU' subTitle='WOULD YOU LIKE TO TRY A DISH ?'></Cover>
 
             <div className='mt-12'>
@@ -36,6 +34,8 @@ const Menu = () => {
                     Title={"--- Don't miss ---"}>
                 </Title>
             </div>
+
+            {/* Offered */}
 
             <OrderFood items={offered} ></OrderFood>
 

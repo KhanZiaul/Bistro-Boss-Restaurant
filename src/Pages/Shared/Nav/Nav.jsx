@@ -7,7 +7,7 @@ const Nav = () => {
         <li><Link>CONTACT US</Link></li>
         <li><Link>  DASHBOARD</Link></li>
         <li><Link to='/menu'>OUR MENU</Link></li>
-        <li><Link to='/order'>ORDER</Link></li>
+        <li><Link to='/order/salad'>ORDER</Link></li>
         <Link className="btn bg-slate-600">Login</Link>
     </>
 
