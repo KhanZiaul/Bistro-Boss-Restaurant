@@ -42,7 +42,7 @@ const Login = () => {
                         </div>
                         <div className='my-6 flex justify-between flex-col md:flex-row items-center'>
                             <div>
-                                <small>New to The Kitchn? <Link to='/register' className='text-blue-700 underline hover:text-blue-900'>Create New Account</Link></small>
+                                <small>New to Bistro Boss Restaurant? <Link to='/register' className='text-blue-700 underline hover:text-blue-900'>Create New Account</Link></small>
                             </div>
                             <div>
                                 <small><Link
