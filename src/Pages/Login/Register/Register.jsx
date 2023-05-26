@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 
 const Register = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, logOut } = useContext(AuthContext)
 
     const [showOrHide, setShowOrHide] = useState(true)
@@ -21,11 +21,10 @@ const Register = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 setRegisterMessage('Successfully Login')
-
+                reset()
                 logOut().then(() => {
                 }).catch((error) => {
                 });
-                
                 navigate('/')
             })
             .catch((error) => {
