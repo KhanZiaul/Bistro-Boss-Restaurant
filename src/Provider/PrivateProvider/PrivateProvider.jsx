@@ -13,7 +13,7 @@ const PrivateProvider = ({children}) => {
         return children
     }
 
-    <Navigate to='/login' state={{from : location}} replace></Navigate>
+    return <Navigate to='/login' state={{from : location}} replace></Navigate>
 };
 
 export default PrivateProvider;

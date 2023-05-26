@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
@@ -20,6 +20,9 @@ const Login = () => {
     const { signInUser, signInpopUp } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location?.state?.from?.pathname || '/'
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -48,6 +51,7 @@ const Login = () => {
                 console.log(user)
                 setLoginMessage('Successfully Login')
                 setColor(true)
+                navigate(from,{replace : true})
             })
             .catch((error) => {
                 const errorMessage = error.message;

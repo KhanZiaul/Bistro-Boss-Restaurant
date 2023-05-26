@@ -19,11 +19,11 @@ const Nav = () => {
         <li><Link to='/private'>PRIVATE</Link></li>
         <li><Link to='/order/salad'>ORDER</Link></li>
         {user ? <>
-            <Link to='/login' className="btn bg-slate-600">Logout</Link>
+            <Link  onClick={logOutHandler} className="btn bg-slate-600">Logout</Link>
         </>
             :
             <>
-                <Link onClick={logOutHandler} to='/login' className="btn bg-slate-600">Login</Link>
+                <Link to='/login' className="btn bg-slate-600">Login</Link>
             </>
         }
     </>
