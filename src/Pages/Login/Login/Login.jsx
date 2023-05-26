@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useEffect } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 
 
@@ -19,6 +19,7 @@ const Login = () => {
 
     const { user, signInpopUp } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -47,6 +48,19 @@ const Login = () => {
 
     function googleHandler() {
         signInpopUp(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                setLoginMessage('Successfully Login')
+                setColor(true)
+            }).catch((error) => {
+                const errorMessage = error.message;
+                setLoginMessage(errorMessage)
+                setColor(false)
+            });
+    }
+
+    function githubHandler() {
+        signInpopUp(githubProvider)
             .then((result) => {
                 const user = result.user;
                 setLoginMessage('Successfully Login')
@@ -115,7 +129,7 @@ const Login = () => {
                         </div>
 
                         <div className='inline-block'>
-                            <div className='cursor-pointer border-2 flex items-center rounded-lg text-blue-700 px-8 py-3 gap-4 hover:bg-sky-950 hover:text-white'>
+                            <div onClick={githubHandler}  className='cursor-pointer border-2 flex items-center rounded-lg text-blue-700 px-8 py-3 gap-4 hover:bg-sky-950 hover:text-white'>
                                 <FaGithub></FaGithub>
                                 <span>GitHub Sign-in</span>
                             </div>
