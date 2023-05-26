@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { FaGithub } from 'react-icons/fa';
@@ -17,7 +17,7 @@ const Login = () => {
     const [captcha, setCaptcha] = useState(true)
     const [loginMessage, setLoginMessage] = useState('')
 
-    const { user, signInpopUp } = useContext(AuthContext)
+    const { user, createUser, signInpopUp } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
@@ -39,12 +39,29 @@ const Login = () => {
 
     function formSubmit(e) {
         e.preventDefault()
+        const Email = e.target.email.value;
+        const Password = e.target.password.value;
 
+        createUser(Email, Password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                setLoginMessage('Successfully Login')
+                setColor(true)
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setLoginMessage(errorMessage)
+                setColor(false)
+            });
+
+            e.target.reset()
     }
 
     function hideOrShowHandler() {
         setShowOrHide(!showOrHide)
     }
+
+
 
     function googleHandler() {
         signInpopUp(googleProvider)
@@ -129,7 +146,7 @@ const Login = () => {
                         </div>
 
                         <div className='inline-block'>
-                            <div onClick={githubHandler}  className='cursor-pointer border-2 flex items-center rounded-lg text-blue-700 px-8 py-3 gap-4 hover:bg-sky-950 hover:text-white'>
+                            <div onClick={githubHandler} className='cursor-pointer border-2 flex items-center rounded-lg text-blue-700 px-8 py-3 gap-4 hover:bg-sky-950 hover:text-white'>
                                 <FaGithub></FaGithub>
                                 <span>GitHub Sign-in</span>
                             </div>
