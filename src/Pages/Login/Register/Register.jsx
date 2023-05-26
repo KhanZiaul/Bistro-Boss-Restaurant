@@ -48,8 +48,13 @@ const Register = () => {
 
                         <div >
                             <div className="flex items-center border-b  border-slate-700 py-2">
-                                <input {...register("password")} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type={showOrHide ? 'password' : 'text'} placeholder="Enter your password" aria-label="Full name" name='password' />
+                                <input {...register("password", { required: true , maxLength:20 , minLength:6, pattern:   /(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]/ })} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type={showOrHide ? 'password' : 'text'} placeholder="Enter your password" aria-label="Full name" name='password' />
                             </div>
+                            {errors.password?.type === 'required' && <p role="alert" className='text-red-500 font-bold my-2'>Password is required</p>}
+                            {errors.password?.type === 'minLength' && <p role="alert" className='text-red-500 font-bold my-2'>Password should be at least 6 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p role="alert" className='text-red-500 font-bold my-2'>Password can not be more than 20 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p role="alert" className='text-red-500 font-bold my-2'>Password can not be more than 20 characters</p>}
+                            {errors.password?.type === 'pattern' && <p role="alert" className='text-red-500 font-bold my-2'>Password should contain one uppercase , one lower case and a number</p>}
 
                             <div className='absolute top-48 right-4'>
                                 {
