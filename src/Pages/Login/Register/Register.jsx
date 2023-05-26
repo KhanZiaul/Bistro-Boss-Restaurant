@@ -1,18 +1,40 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 
 const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data)
-    };
+    const { createUser, logOut } = useContext(AuthContext)
 
     const [showOrHide, setShowOrHide] = useState(true)
     const [isCheck, setIsCheck] = useState(false)
     const [registerMessage, setRegisterMessage] = useState('')
+    const navigate = useNavigate()
+
+    const onSubmit = data => {
+        console.log(data)
+
+        createUser(data.email, data.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                setRegisterMessage('Successfully Login')
+
+                logOut().then(() => {
+                }).catch((error) => {
+                });
+                
+                navigate('/')
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setRegisterMessage(errorMessage)
+            });
+
+    };
+
 
     function hideOrShowHandler() {
 
@@ -23,6 +45,7 @@ const Register = () => {
 
         setIsCheck(event.target.checked)
     }
+
 
     return (
 
@@ -39,7 +62,7 @@ const Register = () => {
                         </div>
 
                         <div className="flex items-center border-b border-slate-700 py-2 mb-4">
-                            <input {...register("URL")}   className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your photoURL" name='URL' aria-label="Full name" />
+                            <input {...register("URL")} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your photoURL" name='URL' aria-label="Full name" />
                         </div>
 
                         <div className="flex items-center border-b border-slate-700 py-2 mb-4">
@@ -48,7 +71,7 @@ const Register = () => {
 
                         <div >
                             <div className="flex items-center border-b  border-slate-700 py-2">
-                                <input {...register("password", { required: true , maxLength:20 , minLength:6, pattern:   /(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]/ })} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type={showOrHide ? 'password' : 'text'} placeholder="Enter your password" aria-label="Full name" name='password' />
+                                <input {...register("password", { required: true, maxLength: 20, minLength: 6, pattern: /(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]/ })} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type={showOrHide ? 'password' : 'text'} placeholder="Enter your password" aria-label="Full name" name='password' />
                             </div>
                             {errors.password?.type === 'required' && <p role="alert" className='text-red-500 font-bold my-2'>Password is required</p>}
                             {errors.password?.type === 'minLength' && <p role="alert" className='text-red-500 font-bold my-2'>Password should be at least 6 characters</p>}

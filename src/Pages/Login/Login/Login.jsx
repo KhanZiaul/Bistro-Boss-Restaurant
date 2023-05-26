@@ -17,7 +17,7 @@ const Login = () => {
     const [captcha, setCaptcha] = useState(true)
     const [loginMessage, setLoginMessage] = useState('')
 
-    const { user, createUser, signInpopUp } = useContext(AuthContext)
+    const { signInUser, signInpopUp } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
@@ -42,7 +42,7 @@ const Login = () => {
         const Email = e.target.email.value;
         const Password = e.target.password.value;
 
-        createUser(Email, Password)
+        signInUser(Email, Password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 setLoginMessage('Successfully Login')
