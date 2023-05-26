@@ -45,6 +45,7 @@ const Login = () => {
         signInUser(Email, Password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                console.log(user)
                 setLoginMessage('Successfully Login')
                 setColor(true)
             })
