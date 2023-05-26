@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
@@ -16,11 +17,12 @@ const Register = () => {
 
     const onSubmit = data => {
         console.log(data)
-
-        createUser(data.email, data.password)
+        createUser( data.email, data.password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                console.log(user)
                 setRegisterMessage('Successfully Login')
+                updateUser(userCredential.user,data.name, data.URL)
                 reset()
                 logOut().then(() => {
                 }).catch((error) => {
@@ -33,6 +35,15 @@ const Register = () => {
             });
 
     };
+    function updateUser(currentUser, name, URL) {
+        updateProfile(currentUser, {
+            displayName: name, photoURL: URL
+        }).then(() => {
+
+        }).catch((error) => {
+
+        });
+    }
 
 
     function hideOrShowHandler() {
