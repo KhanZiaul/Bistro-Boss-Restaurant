@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data)
+    };
 
     const [showOrHide, setShowOrHide] = useState(true)
     const [isCheck, setIsCheck] = useState(false)
     const [registerMessage, setRegisterMessage] = useState('')
-
-    function formSubmit(e) {
-        e.preventDefault()
-
-    }
 
     function hideOrShowHandler() {
 
@@ -29,25 +30,25 @@ const Register = () => {
         <div>
             <h1 className="text-4xl font-semibold text-center my-8">REGISTER</h1>
             <div className='w-full md:w-2/4 mx-auto border-2 p-10 rounded-xl'>
-                <form onSubmit={formSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div className='relative'>
 
                         <div className="flex items-center border-b border-slate-700 py-2 mb-4">
-                            <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your name" name='name' aria-label="Full name" required />
+                            <input {...register("name")} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your name" name='name' aria-label="Full name" required />
                         </div>
 
                         <div className="flex items-center border-b border-slate-700 py-2 mb-4">
-                            <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your photoURL" name='URL' aria-label="Full name" />
+                            <input {...register("URL")}   className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter your photoURL" name='URL' aria-label="Full name" />
                         </div>
 
                         <div className="flex items-center border-b border-slate-700 py-2 mb-4">
-                            <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="email" placeholder="Enter your email" name='email' aria-label="Full name" required />
+                            <input {...register("email")} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="email" placeholder="Enter your email" name='email' aria-label="Full name" required />
                         </div>
 
                         <div >
                             <div className="flex items-center border-b  border-slate-700 py-2">
-                                <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type={showOrHide ? 'password' : 'text'} placeholder="Enter your password" aria-label="Full name" name='password' />
+                                <input {...register("password")} className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type={showOrHide ? 'password' : 'text'} placeholder="Enter your password" aria-label="Full name" name='password' />
                             </div>
 
                             <div className='absolute top-48 right-4'>
