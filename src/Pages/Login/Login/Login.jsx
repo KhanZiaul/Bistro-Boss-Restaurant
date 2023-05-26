@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from "react-icons/fc";
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useEffect } from 'react';
+import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
+
+
 
 const Login = () => {
 
@@ -12,6 +16,9 @@ const Login = () => {
     const [color, setColor] = useState(true)
     const [captcha, setCaptcha] = useState(true)
     const [loginMessage, setLoginMessage] = useState('')
+
+    const { user, signInpopUp } = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -36,6 +43,19 @@ const Login = () => {
 
     function hideOrShowHandler() {
         setShowOrHide(!showOrHide)
+    }
+
+    function googleHandler() {
+        signInpopUp(googleProvider)
+            .then((result) => {
+                const user = result.user;
+                setLoginMessage('Successfully Login')
+                setColor(true)
+            }).catch((error) => {
+                const errorMessage = error.message;
+                setLoginMessage(errorMessage)
+                setColor(false)
+            });
     }
 
 
@@ -88,7 +108,7 @@ const Login = () => {
                     </div>
                     <div className='my-6 flex flex-col md:flex-row gap-5 justify-around'>
                         <div className='inline-block'>
-                            <div className='cursor-pointer border-2 flex items-center rounded-lg text-blue-700 px-8 py-3 gap-4 hover:bg-sky-950 hover:text-white'>
+                            <div onClick={googleHandler} className='cursor-pointer border-2 flex items-center rounded-lg text-blue-700 px-8 py-3 gap-4 hover:bg-sky-950 hover:text-white'>
                                 <FcGoogle></FcGoogle>
                                 <span>Google Sign-in</span>
                             </div>
