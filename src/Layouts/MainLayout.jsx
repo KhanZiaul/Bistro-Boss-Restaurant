@@ -6,12 +6,12 @@ const MainLayout = () => {
 
     const location = useLocation()
     console.log(location)
-    // const ignorePage = location.pathname === 'login'
+    const ignorePage = location.pathname.includes('login') || location.pathname.includes('register')
     return (
         <div>
-            {!location.pathname === 'login' || !location.pathname === 'register'  && <Nav></Nav>}
+            { ignorePage || <Nav></Nav>}
             <Outlet></Outlet>
-            {!location.pathname === 'login' || !location.pathname === 'register'  && <Footer></Footer>}
+            { ignorePage || <Footer></Footer>}
         </div>
     );
 };
