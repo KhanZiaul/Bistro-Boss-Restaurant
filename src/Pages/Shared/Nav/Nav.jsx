@@ -10,12 +10,13 @@ const Nav = () => {
         }).catch((error) => {
         });
     }
-    
+
     const liList = <>
         <li><Link>HOME</Link></li>
         <li><Link>CONTACT US</Link></li>
         <li><Link>  DASHBOARD</Link></li>
         <li><Link to='/menu'>OUR MENU</Link></li>
+        <li><Link to='/private'>PRIVATE</Link></li>
         <li><Link to='/order/salad'>ORDER</Link></li>
         {user ? <>
             <Link to='/login' className="btn bg-slate-600">Logout</Link>
