@@ -24,7 +24,6 @@ const TabCard = ({ item }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.acknowledged) {
                         Swal.fire({
                             position: 'top-end',
