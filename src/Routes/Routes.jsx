@@ -9,6 +9,9 @@ import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import Private from "../Pages/Private/Private";
 import PrivateProvider from "../Provider/PrivateProvider/PrivateProvider";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import MyCart from "../Pages/Dashboard/MyCart/MyCart";
+import PayemtHistory from "../Pages/Dashboard/PaymentHistory/PayemtHistory";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +42,20 @@ const router = createBrowserRouter([
             {
                 path:'/private',
                 element:<PrivateProvider><Private></Private></PrivateProvider>
+            }
+        ]
+    },
+    {
+        path:"dashboard",
+        element:<DashboardLayout></DashboardLayout>,
+        children:[
+            {
+                path:'mycart',
+                element:<MyCart></MyCart>
+            },
+            {
+                path:'payment',
+                element:<PayemtHistory></PayemtHistory>
             }
         ]
     }

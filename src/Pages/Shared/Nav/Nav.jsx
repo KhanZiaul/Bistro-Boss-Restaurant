@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 const Nav = () => {
-    const { user , logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
-    function logOutHandler(){
+    function logOutHandler() {
         logOut().then(() => {
         }).catch((error) => {
         });
@@ -18,8 +18,14 @@ const Nav = () => {
         <li><Link to='/menu'>OUR MENU</Link></li>
         <li><Link to='/private'>PRIVATE</Link></li>
         <li><Link to='/order/salad'>ORDER</Link></li>
+        <li><Link to='/dashboard/mycart'>
+            <button className="btn gap-2">
+                Inbox
+                <div className="badge badge-secondary">+99</div>
+            </button>
+        </Link></li>
         {user ? <>
-            <Link  onClick={logOutHandler} className="btn bg-slate-600">Logout</Link>
+            <Link onClick={logOutHandler} className="btn bg-slate-600">Logout</Link>
         </>
             :
             <>
