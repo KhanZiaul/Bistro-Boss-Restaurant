@@ -5,8 +5,12 @@ import { RiReservedLine } from 'react-icons/ri';
 import { MdPayment, MdOutlinePreview } from 'react-icons/md';
 import { TbBrandBooking } from 'react-icons/tb';
 import { AiOutlineMenuFold, AiFillShopping, AiFillContacts } from 'react-icons/ai';
+import useCart from "../Hooks/useCart/useCart";
 
 const DashboardLayout = () => {
+
+    const [cart] = useCart()
+
     return (
         <div className="drawer drawer-mobile gap-5 lg:my-8">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -18,7 +22,7 @@ const DashboardLayout = () => {
             <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-2 lg:p-4 w-[60%] lg:w-full text-base-content space-y-4 bg-[#D1A054]">
-                    <h2 className="text-2xl font-bold mb-7">BISTRO BOSS <br /> Restaurant</h2>
+                    <h2 className="text-2xl font-bold mb-6">BISTRO BOSS <br /> Restaurant</h2>
 
                     <NavLink
                         to='/dashboard/userHome'
@@ -54,7 +58,8 @@ const DashboardLayout = () => {
                         }
                     >
                         <div className="flex items-center gap-2">
-                            <FaShoppingCart></FaShoppingCart> <span>MY CART</span>
+                            <FaShoppingCart className="w-5 h-5 text-secondary"></FaShoppingCart>
+                            <div className="badge badge-secondary">+{cart?.length || 0}</div> <span>MY CART</span>
                         </div>
                     </NavLink>
                     <NavLink
@@ -113,7 +118,7 @@ const DashboardLayout = () => {
                         }
                     >
                         <div className="flex items-center gap-2">
-                           <AiFillContacts></AiFillContacts> <span>CONTACT</span>
+                            <AiFillContacts></AiFillContacts> <span>CONTACT</span>
                         </div>
                     </NavLink>
 
