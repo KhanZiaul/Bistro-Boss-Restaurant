@@ -8,16 +8,16 @@ import { AiOutlineMenuFold, AiFillShopping, AiFillContacts } from 'react-icons/a
 
 const DashboardLayout = () => {
     return (
-        <div className="drawer drawer-mobile gap-5">
+        <div className="drawer drawer-mobile gap-5 lg:my-8">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open Nabvar</label>
 
             </div>
             <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-full text-base-content space-y-4 bg-[#D1A054]">
+                <ul className="menu p-2 lg:p-4 w-[60%] lg:w-full text-base-content space-y-4 bg-[#D1A054]">
                     <h2 className="text-2xl font-bold mb-7">BISTRO BOSS <br /> Restaurant</h2>
 
                     <NavLink
