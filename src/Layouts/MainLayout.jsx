@@ -5,7 +5,6 @@ import Footer from '../Pages/Shared/Footer/Footer';
 const MainLayout = () => {
 
     const location = useLocation()
-    console.log(location)
     const ignorePage = location.pathname.includes('login') || location.pathname.includes('register')
     return (
         <div>

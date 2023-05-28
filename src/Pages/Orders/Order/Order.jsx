@@ -14,7 +14,7 @@ const Order = () => {
     const location = useLocation()
     useScroll(location)
  
-    const items = ['salad' , 'pizza', 'soup' , 'desserts' , 'drinks']
+    const items = ['salad' , 'pizza', 'soup' , 'dessert' , 'drinks']
     const {category} = useParams()
     const initialIndex = items.indexOf(category)
     const [indexNumber,setIndexNumber] = useState(initialIndex)

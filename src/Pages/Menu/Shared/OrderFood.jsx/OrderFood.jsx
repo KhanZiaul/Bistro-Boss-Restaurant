@@ -9,7 +9,7 @@ const Order = ({ title, subTitle, image , items }) => {
             {
                 title && <Cover image={image} title={title} subTitle={subTitle}></Cover>
             }
-
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-16 space-y-6 mx-4 lg:mx-0">
                 {
                     items?.map((item, index) => {

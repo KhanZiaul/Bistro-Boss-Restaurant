@@ -8,7 +8,7 @@ const Nav = () => {
     function logOutHandler() {
         logOut().then(() => {
         }).catch((error) => {
-        });
+        })
     }
 
     const liList = <>
