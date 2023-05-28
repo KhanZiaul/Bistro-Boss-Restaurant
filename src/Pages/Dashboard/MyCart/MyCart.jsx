@@ -1,5 +1,9 @@
+import useCart from "../../../Hooks/useCart/useCart";
 
 const MyCart = () => {
+    const [cart] = useCart()
+    console.log(cart)
+
     return (
         <div>
             <div className="overflow-x-auto w-full">

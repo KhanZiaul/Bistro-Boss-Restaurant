@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../../../Hooks/useCart/useCart";
 
 
 const TabCard = ({ item }) => {
@@ -10,6 +11,7 @@ const TabCard = ({ item }) => {
     const { user } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
+    const [,refetch] = useCart()
 
     function cartHandler() {
         const cartData = { cartID: _id, image, name, email: user?.email, price }
@@ -33,6 +35,7 @@ const TabCard = ({ item }) => {
                             timer: 1500
                         })
                     }
+                    refetch()
                 })
         }
         else {
