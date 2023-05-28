@@ -17,7 +17,7 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side ">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 text-base-content space-y-4 bg-[#D1A054]">
+                <ul className="menu p-4 w-full text-base-content space-y-4 bg-[#D1A054]">
                     <h2 className="text-2xl font-bold mb-7">BISTRO BOSS <br /> Restaurant</h2>
 
                     <NavLink
