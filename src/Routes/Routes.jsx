@@ -12,6 +12,7 @@ import PrivateProvider from "../Provider/PrivateProvider/PrivateProvider";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import PayemtHistory from "../Pages/Dashboard/PaymentHistory/PayemtHistory";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             {
                 path:'payment',
                 element:<PayemtHistory></PayemtHistory>
+            },
+            {
+                path:'allUsers',
+                element:<AllUsers></AllUsers>
             }
         ]
     }
