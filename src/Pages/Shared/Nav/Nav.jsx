@@ -27,13 +27,13 @@ const Nav = () => {
                 <div className="badge badge-secondary">+{cart?.length || 0}</div>
             </button>
         </Link></li>
-        {user ? <>
-            <Link onClick={logOutHandler} className="btn bg-slate-600">Logout</Link>
-        </>
+        {user ? <li>
+           <span> <Link onClick={logOutHandler} className="btn bg-slate-600">Logout</Link></span>
+        </li>
             :
-            <>
+            <li>
                 <Link to='/login' className="btn bg-slate-600">Login</Link>
-            </>
+            </li>
         }
     </>
 

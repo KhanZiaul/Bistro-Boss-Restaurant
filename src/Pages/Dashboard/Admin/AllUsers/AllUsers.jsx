@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { BsTrash } from "react-icons/bs";
 import { FaUserAlt, FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
@@ -13,10 +14,27 @@ const AllUsers = () => {
         }
     })
 
-    console.log(loggedUsers)
+    function updateUserHandler(id) {
+        console.log(id)
 
+        fetch(`http://localhost:7000/users/admin/${id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                refetch()
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'New Admin Added',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+    }
 
-    function updateUSerHandler() {
+    function deleteUSerHandler() {
 
     }
 
@@ -53,11 +71,11 @@ const AllUsers = () => {
                                             </td>
                                             <td className="text-left">
                                                 {
-                                                    loggedUser.role ? <FaUserAlt></FaUserAlt> : <FaUsers></FaUsers>
+                                                    loggedUser.role ? <FaUserAlt></FaUserAlt> : <FaUsers onClick={() => updateUserHandler(loggedUser._id)} className="text-white h-8 w-8 bg-[#D1A054] hover:bg-[#df8f17] cursor-pointer p-2 rounded-md"></FaUsers>
                                                 }
                                             </td>
                                             <th>
-                                                <button onClick={() => updateUSerHandler(loggedUser._id)} className="btn btn-ghost btn-xs btn-lg"><BsTrash className="text-red-600"></BsTrash> </button>
+                                                <button onClick={() => deleteUSerHandler(loggedUser._id)} className="btn btn-ghost btn-xs btn-lg"><BsTrash className="text-red-600"></BsTrash> </button>
                                             </th>
                                         </tr>
                                     )
