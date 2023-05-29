@@ -17,12 +17,26 @@ const Register = () => {
 
     const onSubmit = data => {
         console.log(data)
-        createUser( data.email, data.password)
+        createUser(data.email, data.password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
+
+                if (user && user.email) {
+                    const userDetails = { name: user.displayName, email: user.email }
+                    fetch('http://localhost:7000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userDetails)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                        })
+                }
                 setRegisterMessage('Successfully Login')
-                updateUser(userCredential.user,data.name, data.URL)
+                updateUser(userCredential.user, data.name, data.URL)
                 reset()
                 logOut().then(() => {
                 }).catch((error) => {

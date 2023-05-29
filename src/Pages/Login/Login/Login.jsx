@@ -51,7 +51,7 @@ const Login = () => {
                 console.log(user)
                 setLoginMessage('Successfully Login')
                 setColor(true)
-                navigate(from,{replace : true})
+                navigate(from, { replace: true })
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -59,7 +59,7 @@ const Login = () => {
                 setColor(false)
             });
 
-            e.target.reset()
+        e.target.reset()
     }
 
     function hideOrShowHandler() {
@@ -74,6 +74,20 @@ const Login = () => {
                 const user = result.user;
                 setLoginMessage('Successfully Login')
                 setColor(true)
+                if (user && user.email) {
+                    const userDetails = { name: user.displayName, email: user.email }
+                    fetch('http://localhost:7000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userDetails)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                        })
+                }
             }).catch((error) => {
                 const errorMessage = error.message;
                 setLoginMessage(errorMessage)
