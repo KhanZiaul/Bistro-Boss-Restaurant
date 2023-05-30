@@ -7,12 +7,14 @@ import { TbBrandBooking } from 'react-icons/tb';
 import { AiOutlineMenuFold, AiFillShopping, AiFillContacts } from 'react-icons/ai';
 import { GiKitchenKnives } from 'react-icons/gi';
 import useCart from "../Hooks/useCart/useCart";
+import useAdmin from "../Hooks/useAdmin/useAdmin";
 
-const admin = true;
 
 const DashboardLayout = () => {
 
     const [cart] = useCart()
+    const [isAdmin] = useAdmin()
+    
 
     return (
         <div className="drawer drawer-mobile gap-5 lg:my-8">
@@ -28,7 +30,7 @@ const DashboardLayout = () => {
                     <h2 className="text-2xl font-bold mb-6">BISTRO BOSS <br /> Restaurant</h2>
 
                     {
-                        admin ?
+                        isAdmin ?
 
                             <>
                                 <NavLink

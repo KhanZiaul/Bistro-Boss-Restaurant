@@ -19,20 +19,18 @@ function useAxiosSrcure() {
             config.headers.Authorization = `Bearer ${token}`
         }
         return config
-      })
+      });
 
-      axiosSecure.interceptors.response.use((response) =>{
-        response,
+      axiosSecure.interceptors.response.use((response) =>response,
         async(error)=>{
             if(error.response && (error.response.status === 401 || error.response.status === 403)){
-                await logOut
+                await logOut()
                 navigate('/login')
             }
             return Promise.reject(error)
         }
-      })
-
-    }, [logOut,navigate,axiosSecure])
+      )
+    }, [logOut, navigate, axiosSecure])
 
     return [axiosSecure];
 }
