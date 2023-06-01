@@ -3,22 +3,24 @@ import Title from '../../../../Components/Title/Title';
 const image_key = import.meta.env.VITE_IMAGE_KEY
 
 const AddAnItem = () => {
-    console.log(image_key)
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_key}`
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
         const formData = new FormData()
-        formData.append('image' , data.image[0])
-        // console.log(data)
-        fetch(image_hosting_url,{
-            method:"POST",
-            body:formData
+        formData.append('image', data.image[0])
+        fetch(image_hosting_url, {
+            method: "POST",
+            body: formData
         })
-        .then(res => res.json())
-        .then (imageData =>{
-            console.log(imageData)
-        })
+            .then(res => res.json())
+            .then(imageData => {
+                const image = imageData.data.display_url
+                if (imageData.success) {
+                    const { name, recipe, category, price } = data
+                    const newItem = { name, recipe, category, image , price }
+                    console.log(newItem)
+                }
+            })
     };
 
     return (
