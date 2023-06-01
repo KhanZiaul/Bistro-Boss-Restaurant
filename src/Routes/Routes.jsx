@@ -13,6 +13,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import PayemtHistory from "../Pages/Dashboard/PaymentHistory/PayemtHistory";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
+import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             {
                 path:'allUsers',
                 element:<AllUsers></AllUsers>
+            },
+            {
+                path:'manageItems',
+                element:<ManageItems></ManageItems>
             }
         ]
     }
