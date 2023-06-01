@@ -33,21 +33,27 @@ const ManageItems = () => {
                         </thead>
                         <tbody>
                             {
-                                allMenu?.map(menu => {
+                                allMenu?.map((menu , index) => {
                                     return (
                                         <>
                                             <tr key={menu._id}>
                                                 <th>
-
+                                                    {
+                                                        index + 1
+                                                    }
                                                 </th>
                                                 <td>
-
+                                                    <img src={menu.image} className="w-12 h-12 rounded-full" alt="" />
                                                 </td>
                                                 <td className="font-semibold">
-
+                                                    {
+                                                        menu.name
+                                                    }
                                                 </td>
                                                 <td className="text-left">
-
+                                                    ${
+                                                        menu.price
+                                                    }
                                                 </td>
                                                 <th>
                                                     <BiEdit className="text-white h-8 w-8 bg-[#D1A054] hover:bg-[#df8f17] cursor-pointer p-2 rounded-md"></BiEdit>
