@@ -48,7 +48,7 @@ const AllUsers = () => {
                         {/* head */}
                         <thead >
                             <tr >
-                                <th className="bg-[#D1A054] text-white"></th>
+                                <th className="bg-[#D1A054] text-white">#</th>
                                 <th className="bg-[#D1A054] text-white">NAME</th>
                                 <th className="bg-[#D1A054] text-white">EMAIL</th>
                                 <th className="bg-[#D1A054] text-white">ROLE</th>

@@ -43,7 +43,7 @@ const DashboardLayout = () => {
                                     </div>
                                 </NavLink>
                                 <NavLink
-                                    to='/dashboard/addItems'
+                                    to='/dashboard/addItem'
                                     className={({ isActive }) => isActive ? "active" : ""
                                     }
                                 >

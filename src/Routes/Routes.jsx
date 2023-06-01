@@ -14,6 +14,7 @@ import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import PayemtHistory from "../Pages/Dashboard/PaymentHistory/PayemtHistory";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
+import AddAnItem from "../Pages/Dashboard/Admin/AddAnItem/AddAnItem";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path:'manageItems',
                 element:<ManageItems></ManageItems>
+            },
+            {
+                path:'addItem',
+                element:<AddAnItem></AddAnItem>
             }
         ]
     }
