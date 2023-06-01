@@ -14,14 +14,16 @@ const DashboardLayout = () => {
 
     const [cart] = useCart()
     const [isAdmin] = useAdmin()
-    
+
 
     return (
         <div className="drawer drawer-mobile gap-5 lg:my-8">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content">
                 <Outlet></Outlet>
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open Nabvar</label>
+                <div className="w-36 mx-auto my-5">
+                    <label htmlFor="my-drawer-2" className="btn bg-[#D1A054] drawer-button lg:hidden">Open Nabvar</label>
+                </div>
 
             </div>
             <div className="drawer-side ">
