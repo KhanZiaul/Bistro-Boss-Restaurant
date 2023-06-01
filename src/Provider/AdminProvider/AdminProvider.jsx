@@ -8,7 +8,8 @@ const AdminProvider = ({ children }) => {
 
     const { loading, user } = useContext(AuthContext)
     const location = useLocation()
-    const [isAdmin, isLoading] = useAdmin()
+    const [isAdmin, ,isLoading] = useAdmin()
+
     if (loading || isLoading) {
         return <progress className="progress w-56"></progress>
     }

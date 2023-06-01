@@ -11,17 +11,17 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
 
     function createUser(email, password) {
-        setLoading(false)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     function signInUser(email, password) {
-        setLoading(false)
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     function logOut() {
-        setLoading(false)
+        setLoading(true)
         return signOut(auth)
     }
 
@@ -43,6 +43,7 @@ const AuthProvider = ({ children }) => {
             else{
                 localStorage.removeItem('access-token')
             }
+            setLoading(false)
         });
         return () => {
             return unsubscribe();

@@ -67,7 +67,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'manageItems',
-                element:<AdminProvider><ManageItems></ManageItems></AdminProvider>
+                element:<ManageItems></ManageItems>
             },
             {
                 path:'addItem',
