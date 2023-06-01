@@ -7,7 +7,7 @@ const image_key = import.meta.env.VITE_IMAGE_KEY
 const AddAnItem = () => {
     const [axiosSecure] = useAxiosSrcure()
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_key}`
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } , reset } = useForm();
     const onSubmit = data => {
         const formData = new FormData()
         formData.append('image', data.image[0])
@@ -25,6 +25,7 @@ const AddAnItem = () => {
                     axiosSecure.post(`/menu`,newItem)
                     .then(newItemData => {
                         console.log(newItemData.data)
+                        reset()
                     })
                 }
             })
