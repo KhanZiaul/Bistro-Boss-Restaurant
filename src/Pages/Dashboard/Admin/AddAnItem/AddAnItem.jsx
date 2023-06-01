@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form';
 import Title from '../../../../Components/Title/Title';
+import axios from 'axios';
+import useAxiosSrcure from '../../../../Hooks/useAxiosSecure/useAxiosSecure';
 const image_key = import.meta.env.VITE_IMAGE_KEY
 
 const AddAnItem = () => {
+    const [axiosSecure] = useAxiosSrcure()
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_key}`
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -19,6 +22,10 @@ const AddAnItem = () => {
                     const { name, recipe, category, price } = data
                     const newItem = { name, recipe, category, image , price }
                     console.log(newItem)
+                    axiosSecure.post(`/menu`,newItem)
+                    .then(newItemData => {
+                        console.log(newItemData.data)
+                    })
                 }
             })
     };
@@ -48,8 +55,10 @@ const AddAnItem = () => {
                         </label>
                         <select {...register("category", { required: true })} defaultValue='Category' type="text" placeholder="email" className="input input-bordered" >
                             <option disabled selected>Category</option>
-                            <option>Han Solo</option>
-                            <option>Greedo</option>
+                            <option>salad</option>
+                            <option>pizza</option>
+                            <option>dessert</option>
+                            <option>drinks</option>
                         </select>
                     </div>
                     <div className="form-control w-full">
