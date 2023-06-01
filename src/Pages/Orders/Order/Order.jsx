@@ -28,7 +28,7 @@ const Order = () => {
 
 
     return (
-        <div className='my-12'>
+        <div className='mb-12'>
             <Helmet>
                 <title>ORDER | Bistro Boss Restaurant</title>
             </Helmet>

@@ -15,6 +15,7 @@ import PayemtHistory from "../Pages/Dashboard/PaymentHistory/PayemtHistory";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
 import AddAnItem from "../Pages/Dashboard/Admin/AddAnItem/AddAnItem";
+import AdminProvider from "../Provider/AdminProvider/AdminProvider";
 
 const router = createBrowserRouter([
     {
@@ -54,11 +55,11 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'mycart',
-                element:<MyCart></MyCart>
+                element:<PrivateProvider><MyCart></MyCart></PrivateProvider>
             },
             {
                 path:'payment',
-                element:<PayemtHistory></PayemtHistory>
+                element:<PrivateProvider><PayemtHistory></PayemtHistory></PrivateProvider>
             },
             {
                 path:'allUsers',
@@ -66,11 +67,11 @@ const router = createBrowserRouter([
             },
             {
                 path:'manageItems',
-                element:<ManageItems></ManageItems>
+                element:<AdminProvider><ManageItems></ManageItems></AdminProvider>
             },
             {
                 path:'addItem',
-                element:<AddAnItem></AddAnItem>
+                element:<AdminProvider><AddAnItem></AddAnItem></AdminProvider>
             }
         ]
     }

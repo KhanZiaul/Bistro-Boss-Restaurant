@@ -11,15 +11,6 @@ const useCart = () => {
     const { data: cart = [] , refetch } = useQuery({
         queryKey: ['carts', user?.email],
         enabled: !loading,
-        // queryFn: async () => {
-        //     const res = await fetch(`http://localhost:7000/carts?email=${user?.email}`,{
-        //         headers:{
-        //             authorization : `bearer ${token}`
-        //         }
-        //     })
-        //     return res.json()
-        // }
-
         queryFn: async () => {
             const res = await axiosSecure.get(`/carts?email=${user?.email}`)
             return res.data
@@ -29,3 +20,13 @@ const useCart = () => {
 };
 
 export default useCart;
+
+
+        // queryFn: async () => {
+        //     const res = await fetch(`http://localhost:7000/carts?email=${user?.email}`,{
+        //         headers:{
+        //             authorization : `bearer ${token}`
+        //         }
+        //     })
+        //     return res.json()
+        // }
