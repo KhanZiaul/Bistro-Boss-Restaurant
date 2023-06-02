@@ -1,9 +1,14 @@
 import Swal from "sweetalert2";
 import useCart from "../../../Hooks/useCart/useCart";
 import { BsTrash } from 'react-icons/bs';
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
+
     const [cart , refetch] = useCart()
+
+    const payment = cart.reduce((initial , final)=> initial + final.price ,0)
+    console.log(payment)
 
     function deleteHandler(id) {
         Swal.fire({
@@ -36,7 +41,13 @@ const MyCart = () => {
     }
 
     return (
-        <div>
+        <div className="mt-12">
+
+            <div className="flex justify-center gap-6 my-5">
+                <p className="text-xl font-semibold">Total : ${payment}</p>
+                <Link to='/dashboard/payment'><button className="btn btn-sm bg-[#D1A054]">Pay</button></Link>
+            </div>
+            
             <div className="overflow-x-auto w-full">
                 <table className="table w-[80%] mx-auto">
                     {/* head */}
