@@ -7,7 +7,7 @@ const MyCart = () => {
 
     const [cart , refetch] = useCart()
 
-    const payment = cart.reduce((initial , final)=> initial + final.price ,0)
+    const payment = cart.reduce((initial , final)=> initial + parseFloat(final.price) ,0)
     console.log(payment)
 
     function deleteHandler(id) {
