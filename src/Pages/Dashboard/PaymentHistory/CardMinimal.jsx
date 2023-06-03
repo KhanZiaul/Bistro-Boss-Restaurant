@@ -1,8 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import './CardMinimal.css'
 import { useEffect } from "react";
 import useAxiosSrcure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 
 const CardMinimal = ({ cart, amount }) => {
@@ -13,15 +14,16 @@ const CardMinimal = ({ cart, amount }) => {
     const [axiosSecure] = useAxiosSrcure()
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId, setTransactionId] = useState("");
+    const { user } = useContext(AuthContext)
 
     const price = parseFloat(amount)
 
-    useEffect(()=>{
-        axiosSecure.post('/create-payment-intent' , {price})
-        .then(res => {
-            setClientSecret(res.data.clientSecret)
-        })
-    },[price,axiosSecure])
+    useEffect(() => {
+        axiosSecure.post('/create-payment-intent', { price })
+            .then(res => {
+                setClientSecret(res.data.clientSecret)
+            })
+    }, [price, axiosSecure])
 
 
     const handleSubmit = async (event) => {
@@ -55,19 +57,38 @@ const CardMinimal = ({ cart, amount }) => {
                 payment_method: {
                     card: card,
                     billing_details: {
-                        name: 'Jenny Rosen',
+                        name: user ? user.displayName : 'anomyous',
+                        email: user ? user.email : 'unknown'
                     },
                 },
             },
         );
 
-        if(conFirmError){
+        if (conFirmError) {
             console.log(conFirmError)
 
         }
-        if(paymentIntent.status === "succeeded"){
-            setTransactionId(paymentIntent.id)
+
+        if (paymentIntent.status == 'succeeded') {
+
             console.log(paymentIntent)
+
+            setTransactionId(paymentIntent.id)
+
+            const payment = {
+                name: user.displayName,
+                email: user.email,
+                transactionId,
+                totalProducts: cart?.length,
+                productsId: cart.map(cId => cId.cartID),
+                productsName: cart.map(cn => cn.name)
+            }
+
+            axiosSecure.post('/payment', payment)
+                .then(res => {
+                    console.log(res.data)
+                })
+
         }
 
     };
@@ -94,6 +115,7 @@ const CardMinimal = ({ cart, amount }) => {
                 Pay
             </button>
             <p className="text-xl mt-3 text-red-600">{getError}</p>
+            <p className="text-xl mt-3 text-green-600">  {transactionId ? `Payment Successfully done , Transaction id - ${transactionId}` : ' '}</p>
         </form>
     );
 };
