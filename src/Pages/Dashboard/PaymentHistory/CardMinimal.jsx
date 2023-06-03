@@ -6,7 +6,7 @@ import useAxiosSrcure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 
-const CardMinimal = ({ cart, amount }) => {
+const CardMinimal = ({ cart, refetch , amount }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -89,6 +89,7 @@ const CardMinimal = ({ cart, amount }) => {
 
             axiosSecure.post('/payment', payment)
                 .then(res => {
+                    refetch()
                     console.log(res.data)
                 })
         }
