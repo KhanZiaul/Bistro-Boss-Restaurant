@@ -5,27 +5,30 @@ import { useEffect } from "react";
 import useAxiosSrcure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 
 
-const CardMinimal = ({cart,price}) => {
-
+const CardMinimal = ({ cart, amount }) => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const [getError , setError] = useState('')
+    const [getError, setError] = useState('')
     const [axiosSecure] = useAxiosSrcure()
+    const [clientSecret, setClientSecret] = useState("");
+
+    const price = parseFloat(amount)
 
     useEffect(()=>{
-        ///create-payment-intent
-        
-    },[])
+        axiosSecure.post('/create-payment-intent' , {price})
+        .then(res => {
+            setClientSecret(res.data.clientSecret)
+        })
+    },[price,axiosSecure])
+
 
     const handleSubmit = async (event) => {
 
         event.preventDefault();
-
         if (!stripe || !elements) {
             return;
         }
-
         const card = elements.getElement(CardElement);
 
         if (card == null) {
@@ -39,12 +42,24 @@ const CardMinimal = ({cart,price}) => {
 
         if (error) {
             console.log('[error]', error);
-           setError(error.message)
+            setError(error.message)
         } else {
             console.log('[PaymentMethod]', paymentMethod);
             setError('')
         }
-        
+
+        // const { paymentIntent, conFirmError } = await stripe.confirmCardPayment(
+        //     '{PAYMENT_INTENT_CLIENT_SECRET}',
+        //     {
+        //         payment_method: {
+        //             card: card,
+        //             billing_details: {
+        //                 name: 'Jenny Rosen',
+        //             },
+        //         },
+        //     },
+        // );
+
     };
 
     return (
