@@ -19,10 +19,12 @@ const CardMinimal = ({ cart, amount }) => {
     const price = parseFloat(amount)
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                setClientSecret(res.data.clientSecret)
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
     }, [price, axiosSecure])
 
 
@@ -74,12 +76,13 @@ const CardMinimal = ({ cart, amount }) => {
             console.log(paymentIntent)
 
             setTransactionId(paymentIntent.id)
-
             const payment = {
                 name: user.displayName,
                 email: user.email,
+                date: new Date(),
                 transactionId,
                 totalProducts: cart?.length,
+                cartId: cart.map(cId => cId._id),
                 productsId: cart.map(cId => cId.cartID),
                 productsName: cart.map(cn => cn.name)
             }
@@ -88,9 +91,7 @@ const CardMinimal = ({ cart, amount }) => {
                 .then(res => {
                     console.log(res.data)
                 })
-
         }
-
     };
 
     return (
@@ -115,7 +116,7 @@ const CardMinimal = ({ cart, amount }) => {
                 Pay
             </button>
             <p className="text-xl mt-3 text-red-600">{getError}</p>
-            <p className="text-xl mt-3 text-green-600">  {transactionId ? `Payment Successfully done , Transaction id - ${transactionId}` : ' '}</p>
+            <p className="text-xl mt-3 text-green-600">  {transactionId ? `Payment successfully done , transaction id - ${transactionId}` : ' '}</p>
         </form>
     );
 };
