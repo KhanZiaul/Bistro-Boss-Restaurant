@@ -1,4 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useState } from "react";
+import './CardMinimal.css'
 
 
 const CardMinimal = () => {
@@ -6,6 +8,7 @@ const CardMinimal = () => {
 
     const stripe = useStripe();
     const elements = useElements();
+    const [getError , setError] = useState('')
 
     const handleSubmit = async (event) => {
 
@@ -21,7 +24,6 @@ const CardMinimal = () => {
             return;
         }
 
-        // Use your card Element with other Stripe.js APIs
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
@@ -29,9 +31,12 @@ const CardMinimal = () => {
 
         if (error) {
             console.log('[error]', error);
+           setError(error.message)
         } else {
             console.log('[PaymentMethod]', paymentMethod);
+            setError('')
         }
+        
     };
 
     return (
@@ -52,9 +57,10 @@ const CardMinimal = () => {
                     },
                 }}
             />
-            <button type="submit" disabled={!stripe}>
+            <button className="btn btn-sm mt-4" type="submit" disabled={!stripe}>
                 Pay
             </button>
+            <p className="text-xl mt-3 text-red-600">{getError}</p>
         </form>
     );
 };
