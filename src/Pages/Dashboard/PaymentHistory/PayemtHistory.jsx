@@ -2,10 +2,15 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CardMinimal from "./CardMinimal";
 import Title from "../../../Components/Title/Title";
+import useCart from "../../../Hooks/useCart/useCart";
 
 const stripePromise = loadStripe(import.meta.env.VITE_CARD_PK);
 
 const PayemtHistory = () => {
+    const [cart] = useCart()
+    const total = cart.reduce((initial , final) => initial+parseFloat(final.price) ,0)
+    const price = parseFloat(total).toFixed(2)
+    console.log(price)
     return (
         <>
             <div className="my-12">
@@ -17,7 +22,7 @@ const PayemtHistory = () => {
 
             <div className="w-[80%] mt-20 mx-auto">
                 <Elements stripe={stripePromise}>
-                    <CardMinimal></CardMinimal>
+                    <CardMinimal cart={cart} price={price}></CardMinimal>
                 </Elements>
             </div>
         </>

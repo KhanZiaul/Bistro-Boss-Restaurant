@@ -1,14 +1,22 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import './CardMinimal.css'
+import { useEffect } from "react";
+import useAxiosSrcure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 
 
-const CardMinimal = () => {
+const CardMinimal = ({cart,price}) => {
 
 
     const stripe = useStripe();
     const elements = useElements();
     const [getError , setError] = useState('')
+    const [axiosSecure] = useAxiosSrcure()
+
+    useEffect(()=>{
+        ///create-payment-intent
+        
+    },[])
 
     const handleSubmit = async (event) => {
 
