@@ -12,6 +12,7 @@ const CardMinimal = ({ cart, amount }) => {
     const [getError, setError] = useState('')
     const [axiosSecure] = useAxiosSrcure()
     const [clientSecret, setClientSecret] = useState("");
+    const [transactionId, setTransactionId] = useState("");
 
     const price = parseFloat(amount)
 
@@ -26,6 +27,7 @@ const CardMinimal = ({ cart, amount }) => {
     const handleSubmit = async (event) => {
 
         event.preventDefault();
+
         if (!stripe || !elements) {
             return;
         }
@@ -35,30 +37,38 @@ const CardMinimal = ({ cart, amount }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
 
         if (error) {
-            console.log('[error]', error);
             setError(error.message)
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
+
             setError('')
         }
 
-        // const { paymentIntent, conFirmError } = await stripe.confirmCardPayment(
-        //     '{PAYMENT_INTENT_CLIENT_SECRET}',
-        //     {
-        //         payment_method: {
-        //             card: card,
-        //             billing_details: {
-        //                 name: 'Jenny Rosen',
-        //             },
-        //         },
-        //     },
-        // );
+        const { paymentIntent, conFirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: 'Jenny Rosen',
+                    },
+                },
+            },
+        );
+
+        if(conFirmError){
+            console.log(conFirmError)
+
+        }
+        if(paymentIntent.status === "succeeded"){
+            setTransactionId(paymentIntent.id)
+            console.log(paymentIntent)
+        }
 
     };
 
