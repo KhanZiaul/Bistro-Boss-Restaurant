@@ -8,8 +8,8 @@ const MyCart = () => {
     const [cart , refetch] = useCart()
 
     const payment = cart.reduce((initial , final)=> initial + parseFloat(final.price) ,0)
-    console.log(payment)
-
+    
+    const total = payment.toFixed(2)
     function deleteHandler(id) {
         Swal.fire({
             title: 'Are you sure?',
@@ -44,7 +44,7 @@ const MyCart = () => {
         <div className="mt-12">
 
             <div className="flex justify-center gap-6 my-5">
-                <p className="text-xl font-semibold">Total : ${payment}</p>
+                <p className="text-xl font-semibold">Total : ${total}</p>
                 <Link to='/dashboard/payment'><button className="btn btn-sm bg-[#D1A054]">Pay</button></Link>
             </div>
             

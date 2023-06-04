@@ -80,7 +80,7 @@ const CardMinimal = ({ cart, refetch , amount }) => {
                 name: user.displayName,
                 email: user.email,
                 date: new Date(),
-                transactionId,
+                transactionId : paymentIntent.id,
                 totalProducts: cart?.length,
                 cartId: cart.map(cId => cId._id),
                 productsId: cart.map(cId => cId.cartID),
