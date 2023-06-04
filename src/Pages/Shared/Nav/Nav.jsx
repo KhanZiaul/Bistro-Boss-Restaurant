@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import useCart from "../../../Hooks/useCart/useCart";
 import { FaShoppingCart } from 'react-icons/fa';
+import useAdmin from "../../../Hooks/useAdmin/useAdmin";
 
 const Nav = () => {
     const { user, logOut } = useContext(AuthContext)
     const [cart] = useCart()
+    const [isAdmin] = useAdmin()
 
     function logOutHandler() {
         logOut().then(() => {
@@ -21,14 +23,23 @@ const Nav = () => {
         <li><Link to='/menu'>OUR MENU</Link></li>
         <li><Link to='/private'>PRIVATE</Link></li>
         <li><Link to='/order/salad'>ORDER</Link></li>
-        <li><Link to='/dashboard/mycart'>
-            <button className="btn gap-2">
-                <FaShoppingCart className="w-8 h-8 text-secondary"></FaShoppingCart>
-                <div className="badge badge-secondary">+{cart?.length || 0}</div>
-            </button>
-        </Link></li>
+        {
+            isAdmin ?
+                <li><Link to='/dashboard/adminHome'>
+                    <button className="btn gap-2">
+                        <FaShoppingCart className="w-8 h-8 text-secondary"></FaShoppingCart>
+                    </button>
+                </Link></li> :
+                <li><Link to='/dashboard/userHome'>
+                    <button className="btn gap-2">
+                        <FaShoppingCart className="w-8 h-8 text-secondary"></FaShoppingCart>
+                        <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                    </button>
+                </Link></li>
+
+        }
         {user ? <li>
-           <span> <Link onClick={logOutHandler} className="btn bg-slate-600">Logout</Link></span>
+            <span> <Link onClick={logOutHandler} className="btn bg-slate-600">Logout</Link></span>
         </li>
             :
             <li>
@@ -36,6 +47,7 @@ const Nav = () => {
             </li>
         }
     </>
+
 
     return (
 

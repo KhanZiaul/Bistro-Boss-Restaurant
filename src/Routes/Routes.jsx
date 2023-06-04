@@ -16,6 +16,8 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
 import AddAnItem from "../Pages/Dashboard/Admin/AddAnItem/AddAnItem";
 import AdminProvider from "../Provider/AdminProvider/AdminProvider";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -24,54 +26,62 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element:<Home></Home>
-                
+                element: <Home></Home>
+
             },
             {
-                path:'/menu',
-                element:<Menu></Menu>
+                path: '/menu',
+                element: <Menu></Menu>
             },
             {
-                path:'/order/:category',
-                element:<Order></Order>
+                path: '/order/:category',
+                element: <Order></Order>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/register',
-                element:<Register></Register>
+                path: '/register',
+                element: <Register></Register>
             },
             {
-                path:'/private',
-                element:<PrivateProvider><Private></Private></PrivateProvider>
+                path: '/private',
+                element: <PrivateProvider><Private></Private></PrivateProvider>
             }
         ]
     },
     {
-        path:"dashboard",
-        element:<DashboardLayout></DashboardLayout>,
-        children:[
+        path: "dashboard",
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
             {
-                path:'mycart',
-                element:<PrivateProvider><MyCart></MyCart></PrivateProvider>
+                path: 'mycart',
+                element: <PrivateProvider><MyCart></MyCart></PrivateProvider>
             },
             {
-                path:'payment',
-                element:<PrivateProvider><PayemtHistory></PayemtHistory></PrivateProvider>
+                path: 'payment',
+                element: <PrivateProvider><PayemtHistory></PayemtHistory></PrivateProvider>
             },
             {
-                path:'allUsers',
-                element:<AdminProvider><AllUsers></AllUsers></AdminProvider>
+                path: 'userHome',
+                element: <PrivateProvider><UserHome></UserHome></PrivateProvider>
             },
             {
-                path:'manageItems',
-                element:<AdminProvider><ManageItems></ManageItems></AdminProvider>
+                path: 'adminHome',
+                element: <AdminProvider><AdminHome></AdminHome></AdminProvider>
             },
             {
-                path:'addItem',
-                element:<AdminProvider><AddAnItem></AddAnItem></AdminProvider>
+                path: 'allUsers',
+                element: <AdminProvider><AllUsers></AllUsers></AdminProvider>
+            },
+            {
+                path: 'manageItems',
+                element: <AdminProvider><ManageItems></ManageItems></AdminProvider>
+            },
+            {
+                path: 'addItem',
+                element: <AdminProvider><AddAnItem></AddAnItem></AdminProvider>
             }
         ]
     }
