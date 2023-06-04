@@ -19,7 +19,7 @@ const AllUsers = () => {
     function updateUserHandler(id) {
         console.log(id)
 
-        fetch(`http://localhost:7000/users/admin/${id}`, {
+        fetch(`https://bistro-boss-server-khanziaul.vercel.app/users/admin/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

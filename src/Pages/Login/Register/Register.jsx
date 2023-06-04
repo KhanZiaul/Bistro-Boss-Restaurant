@@ -23,7 +23,7 @@ const Register = () => {
 
                 if (user && user.email) {
                     const userDetails = { name: user.displayName, email: user.email }
-                    fetch('http://localhost:7000/users', {
+                    fetch('https://bistro-boss-server-khanziaul.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

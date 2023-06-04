@@ -22,7 +22,7 @@ const MyCart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:7000/carts/${id}`, {
+                fetch(`https://bistro-boss-server-khanziaul.vercel.app/carts/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

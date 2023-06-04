@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 const axiosSecure = axios.create({
-  baseURL:'http://localhost:7000'
+  baseURL:'https://bistro-boss-server-khanziaul.vercel.app'
 })
 
 

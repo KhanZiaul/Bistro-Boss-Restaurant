@@ -17,7 +17,7 @@ const TabCard = ({ item }) => {
         const cartData = { cartID: _id, image, name, email: user?.email, price }
         if (user && user.email) {
 
-            fetch(`http://localhost:7000/carts`, {
+            fetch(`https://bistro-boss-server-khanziaul.vercel.app/carts`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
