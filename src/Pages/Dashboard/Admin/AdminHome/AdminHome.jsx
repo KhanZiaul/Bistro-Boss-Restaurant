@@ -142,7 +142,7 @@ const AdminHome = () => {
                             cy="50%"
                             labelLine={false}
                             label={renderCustomizedLabel}
-                            outerRadius={80}
+                            outerRadius={140}
                             fill="#8884d8"
                             dataKey="count"
                         >
