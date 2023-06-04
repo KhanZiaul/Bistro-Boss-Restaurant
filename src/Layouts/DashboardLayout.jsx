@@ -36,7 +36,7 @@ const DashboardLayout = () => {
 
                             <>
                                 <NavLink
-                                    to='/dashboard/userHome'
+                                    to='/dashboard/adminHome'
                                     className={({ isActive }) => isActive ? "active" : ""
                                     }
                                 >
