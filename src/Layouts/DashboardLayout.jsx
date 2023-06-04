@@ -63,7 +63,7 @@ const DashboardLayout = () => {
                                     </div>
                                 </NavLink>
 
-                                <NavLink
+                                {/* <NavLink
                                     to="/dashboard/manageBookings"
                                     className={({ isActive }) => isActive ? "active" : ""
                                     }
@@ -71,7 +71,7 @@ const DashboardLayout = () => {
                                     <div className="flex items-center gap-2">
                                         <MdOutlinePreview></MdOutlinePreview> <span>MANAGE BOOKINGS</span>
                                     </div>
-                                </NavLink>
+                                </NavLink> */}
                                 <NavLink
                                     to="/dashboard/allUsers"
                                     className={({ isActive }) => isActive ? "active" : ""
@@ -95,7 +95,7 @@ const DashboardLayout = () => {
                                         <FiHome></FiHome> <span>USER HOME</span>
                                     </div>
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     to='/dashboard/reservation'
                                     className={({ isActive }) => isActive ? "active" : ""
                                     }
@@ -103,7 +103,7 @@ const DashboardLayout = () => {
                                     <div className="flex items-center gap-2">
                                         <RiReservedLine></RiReservedLine> <span>RESERVATION</span>
                                     </div>
-                                </NavLink>
+                                </NavLink> */}
                                 <NavLink
                                     to='/dashboard/payment'
                                     className={({ isActive }) => isActive ? "active" : ""
@@ -124,7 +124,7 @@ const DashboardLayout = () => {
                                         <div className="badge badge-secondary">+{cart?.length || 0}</div> <span>MY CART</span>
                                     </div>
                                 </NavLink>
-                                <NavLink
+                                {/* <NavLink
                                     to="/dashboard/review"
                                     className={({ isActive }) => isActive ? "active" : ""
                                     }
@@ -132,8 +132,8 @@ const DashboardLayout = () => {
                                     <div className="flex items-center gap-2">
                                         <MdOutlinePreview></MdOutlinePreview> <span>ADD REVIEW</span>
                                     </div>
-                                </NavLink>
-                                <NavLink
+                                </NavLink> */}
+                                {/* <NavLink
                                     to="/dashboard/booking"
                                     className={({ isActive }) => isActive ? "active" : ""
                                     }
@@ -141,7 +141,7 @@ const DashboardLayout = () => {
                                     <div className="flex items-center gap-2">
                                         <TbBrandBooking></TbBrandBooking> <span>MY BOOKING</span>
                                     </div>
-                                </NavLink>
+                                </NavLink> */}
                             </>
                     }
 
